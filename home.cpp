@@ -18,15 +18,15 @@ void welcome(){
     cout<<"\t\t\t     ==         ==            ==             ==        ==       ==       ==    =          =      ==         = ==    ==    =     "<<endl;Sleep(70);
     cout<<"\t\t\t     ==         ==========    ==========     ==        ==       ==========    =            =     ==           ==    ==      =   "<<endl;Sleep(70);
     cout<<"\t\t\t=============================================================================================================================== "<<endl;Sleep(70);
-    cout<<"\t\t\t\t\t\t\t\t\t               =         "<<endl;Sleep(70);   
-    cout<<"\t\t\t\t\t\t\t\t\t             =====       "<<endl;Sleep(70);    
-    cout<<"\t\t\t\t\t\t\t\t\t           =========     "<<endl;Sleep(70);   
-    cout<<"\t\t\t\t\t\t\t\t\t         =============   "<<endl;Sleep(70);    
-    cout<<"\t\t\t\t\t\t\t\t\t       ================= "<<endl;Sleep(70);      
-    cout<<"\t\t\t\t\t\t\t\t\t         =============   "<<endl;Sleep(70);    
-    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==   "<<endl;Sleep(70);   
-    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==   "<<endl;Sleep(70);   
-    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==   "<<endl;Sleep(70);  
+    cout<<"\t\t\t\t\t\t\t\t\t               =          "<<endl;Sleep(70);   
+    cout<<"\t\t\t\t\t\t\t\t\t             =====        "<<endl;Sleep(70);    
+    cout<<"\t\t\t\t\t\t\t\t\t           =========      "<<endl;Sleep(70);   
+    cout<<"\t\t\t\t\t\t\t\t\t         =============    "<<endl;Sleep(70);    
+    cout<<"\t\t\t\t\t\t\t\t\t       =================  "<<endl;Sleep(70);      
+    cout<<"\t\t\t\t\t\t\t\t\t         =============    "<<endl;Sleep(70);    
+    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==    "<<endl;Sleep(70);   
+    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==    "<<endl;Sleep(70);   
+    cout<<"\t\t\t\t\t\t\t\t\t         ==  == ==  ==    "<<endl;Sleep(70);  
     cout<<"\t\t\t\t\t\t\t\t\t       =================  "<<endl;Sleep(70);   
     cout<<"\t\t\t\t\t\t\t\t\t       =================  "<<endl;Sleep(70);  
     SetConsoleTextAttribute(h,4);
@@ -59,9 +59,6 @@ void welcome(){
 	cout<<">";Sleep(60);
 	cout<<"|";Sleep(60);
 	getch();
-       
-    
-
 }
 
 };
