@@ -3,6 +3,8 @@
 #include<windows.h>
 using namespace std;
 class homeClass{
+    public:
+    int option;
 public:
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -89,11 +91,61 @@ void menu(){
 	cout<<"\t\t\t\t    ==       ***       ==           ==       ***      ==            ==       ***      =="<<endl;Sleep(80);
 	cout<<"\t\t\t\t    == WITHDRAW AMOUNT ==           == SEARCH ACCOUNT ==            ==  ISSUE CHEQUE  =="<<endl;Sleep(80);
 	cout<<"\t\t\t\t    ==                 ==           ==     HOLDERS    ==            ==                =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    ==       |1|       ==           ==       |2|      ==            ==      |3|       =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    =====================           ====================            ===================="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    ==       |4|       ==           ==       |5|      ==            ==      |6|       =="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    =====================           ====================            ===================="<<endl<<endl;Sleep(80);
+
+    cout<<"\t\t\t\t                     ====================          =======================  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     ==       ***      ==          ==        ***        ==  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     == SEARCH ACCOUNT ==          ==   DELETE ACCOUNT  ==  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     ==     HOLDERS    ==          ==     :(            ==  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     ==       |7|      ==          ==          |8|      ==  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     ====================          =======================  "<<endl;Sleep(80);
+   
+     SetConsoleTextAttribute(h,4);
+	cout<<"\n\n\t\t\t\t\t\t\t";
+	cout<<"|:) ";Sleep(60);
+	cout<<"E";Sleep(60);
+	cout<<"N";Sleep(60);
+	cout<<"T ";Sleep(60);
+	cout<<"E";Sleep(60);
+    cout<<"R";Sleep(60);
+    cout<<" A";Sleep(60);
+	cout<<"N";Sleep(60);
+	cout<<"Y ";Sleep(60);
+	cout<<"O";Sleep(60);
+	cout<<"P";Sleep(60);
+	cout<<"T";Sleep(60);
+	cout<<"I";Sleep(60);
+	cout<<"O";Sleep(60);
+	cout<<"N";Sleep(60);
+	cout<<" :-";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<":";Sleep(60);
+	cout<<")";Sleep(60);
+	cout<<"-";Sleep(60);	
+	cout<<": ";Sleep(60);
+    cin>>option;
 
 
 
+
+    switch (option)
+    {
+    case 1:
+    cout<<"Hello";
+        break;
+    
+    default:
+    system("CLS");
+    cout<<"\t\t\t\t\tSORRY INVALIDE OPTION !"<<endl;
+    menu();
+    break;
+    }
 }
 
 };
