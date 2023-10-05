@@ -78,14 +78,19 @@ void menu(){
     SetConsoleTextAttribute(h,2);
     cout<<"\n\t\t================================================================================================================================ "<<endl<<endl;Sleep(70);
 
-	cout<<"\t\t\t\t    ====================           ====================            ====================="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    ==      ***       ==           ==       ***      ==            ==        ***      =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    == CREATE ACCOUNT ==           == DEPOSIT AMOUNT ==            == BALANCE INQUARY =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    ==                ==           ==                ==            ==                 =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    ==      |1|       ==           ==       |2|      ==            ==       |3|       =="<<endl;Sleep(80);
-	cout<<"\t\t\t\t    ====================           ====================            ====================="<<endl;Sleep(80);
-
-
+	cout<<"\t\t    ====================           ====================            =====================            ========================="<<endl;Sleep(80);
+	cout<<"\t\t    ==      ***       ==           ==       ***      ==            ==        ***      ==            ==         ***         =="<<endl;Sleep(80);
+	cout<<"\t\t    == CREATE ACCOUNT ==           == DEPOSIT AMOUNT ==            == BALANCE INQUARY ==            ==   ISSUE ATM CARD    =="<<endl;Sleep(80);
+	cout<<"\t\t    ==                ==           ==                ==            ==                 ==            ==                     =="<<endl;Sleep(80);
+	cout<<"\t\t    ==      |1|       ==           ==       |2|      ==            ==       |3|       ==            ==        |4|          =="<<endl;Sleep(80);
+	cout<<"\t\t    ====================           ====================            =====================            ========================="<<endl<<endl<<endl;Sleep(80);
+    
+    cout<<"\t\t\t\t    =====================           ====================            ===================="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    ==       ***       ==           ==       ***      ==            ==       ***      =="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    == WITHDRAW AMOUNT ==           == SEARCH ACCOUNT ==            ==  ISSUE CHEQUE  =="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    ==                 ==           ==     HOLDERS    ==            ==                =="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    ==       |1|       ==           ==       |2|      ==            ==      |3|       =="<<endl;Sleep(80);
+	cout<<"\t\t\t\t    =====================           ====================            ===================="<<endl;Sleep(80);
 
 
 
