@@ -1,13 +1,24 @@
 #include<iostream>
 #include<conio.h>
+#include<fstream>
 #include<windows.h>
 using namespace std;
 class homeClass{
     public:
     int option;
+
+//variable for create account section 
+	string aNamef,aNamel,aDate, aPhone,aAddress,cID,iOffice,iDate,AccountNo,fNamef,mNamef,gNamef,fNamel,mNamel,gNamel;
+    long int AB;
+	//for deposit section variable 
+	string dNamef,dNamel,dPhone,dAccount;
+	int damt;
+	
 public:
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	void deposit();
+	void create();
 
 
 void welcome(){
@@ -67,6 +78,7 @@ void welcome(){
 
 void menu(){
 	system("CLS");
+	char a;
 
     cout<<"\t\t=============================================================================================================================== "<<endl;Sleep(70);
     cout<<"\t\t=============   ==========    ==========     ==        ==       =========           ==           ==           ==    ==      =   "<<endl;Sleep(70);
@@ -98,7 +110,7 @@ void menu(){
 	cout<<"\t\t\t\t                     ==       ***      ==          ==        ***        ==  "<<endl;Sleep(80);
 	cout<<"\t\t\t\t                     == SEARCH ACCOUNT ==          ==   DELETE ACCOUNT  ==  "<<endl;Sleep(80);
 	cout<<"\t\t\t\t                     ==     HOLDERS    ==          ==     :(            ==  "<<endl;Sleep(80);
-	cout<<"\t\t\t\t                     ==       |7|      ==          ==          |8|      ==  "<<endl;Sleep(80);
+	cout<<"\t\t\t\t                     ==       |7|      ==          ==        |8|        ==  "<<endl;Sleep(80);
 	cout<<"\t\t\t\t                     ====================          =======================  "<<endl;Sleep(80);
    
      SetConsoleTextAttribute(h,4);
@@ -137,8 +149,16 @@ void menu(){
     switch (option)
     {
     case 1:
-    cout<<"Hello";
+		do{
+		create();
+		cout<<"\n\n\t\t\t|------------> CREATE ANOTHER ACCOUNT [Y/N] ";
+		}while(a == 'Y' || a == 'y');
         break;
+
+	case 2:
+		deposit();
+		menu();
+		break;
     
     default:
     system("CLS");
@@ -161,3 +181,118 @@ int main()
 
 return 0;
 }//@rajendra_chimala
+
+
+void homeClass::create(){
+	system("CLS");
+	fstream file;
+
+
+    cout<<"\t\t=============================================================================================================================== "<<endl;Sleep(70);
+    cout<<"\t\t=============   ==========    ==========     ==        ==       =========           ==           ==           ==    ==      =   "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==        =  =          == =         ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==       =    =         ==   =       ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         =======       ==             ============       =========        ========        ==     =     ==    ===         "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==     =        =       ==       =   ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==    =          =      ==         = ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==========    ==========     ==        ==       ==========    =            =     ==           ==    ==      =   "<<endl;Sleep(70);
+    cout<<"\n\t\t===================================================< CREATE ACCOUNT >========================================================== "<<endl;Sleep(70);
+    cout<<"\n\n\t\t\t|---------> ACCOUNT HOLDER NAME [First Name]: ";
+	cin>>aNamef;
+	cout<<"\n\n\t\t\t|---------> ACCOUNT HOLDER NAME [First Name]: ";
+	cin>>aNamel; 
+	 cout<<"\n\n\t\t\t|---------> ACCOUNT NUMBER : ";
+	cin>>AccountNo; 
+    cout<<"\n\t\t\t|---------> DATE OF BIRTH [YYYY/MM/DD]: ";
+	cin>>aDate;
+    cout<<"\n\t\t\t|---------> CONTACT NO : ";
+	cin>>aPhone;
+    cout<<"\n\t\t\t|---------> ADDRESS  OF ACCOUNT HOLDER :";
+	cin>>aAddress;
+	cout<<"\n\t\t\t|---------> CITIZENSHIP NO : ";
+	cin>>cID;
+    cout<<"\n\t\t\t|---------> ISSUING OFFICE : ";
+	cin>>iOffice;
+    cout<<"\n\t\t\t|---------> ISSUED DATE : ";
+	cin>>iDate;
+	cout<<"\n\t\t\t|---------> FATHER NAME [First Name]: ";
+	cin>>fNamef;
+	cout<<"\n\t\t\t|---------> FATHER NAME [Last Name]: ";
+	cin>>fNamel;
+	cout<<"\n\t\t\t|---------> MOTHER NAME [First Name] : ";
+	cin>>mNamef;
+	
+	cout<<"\n\t\t\t|---------> MOTHER NAME [last Name] : ";
+	cin>>mNamel;
+	cout<<"\n\t\t\t|---------> GRAND FATHER NAME [First Name] : ";
+	cin>>gNamef;
+	cout<<"\n\t\t\t|---------> GRAND FATHER NAME [Last Name] : ";
+	cin>>gNamel;
+	cout<<"\n\t\t\t|---------> ENTER HOW MUCH YOU WANT DEPOSIT : $";
+	cin>>AB;
+
+
+	if(!file){
+
+		cout<<"|----------> FILE NOT FOUND ! <------------|";
+	}
+	file.open("USER-DETAILS.txt", ios::out | ios::app);
+	file<<aNamef<<" "<<aNamel<<"  " <<AccountNo<<" "<<AB<<" "<<"  "<<aPhone<<"  "<<aDate<<"  "<<aAddress<<"  "<<cID<<"  "<<iOffice<<"  "<<iDate<<"  "<<fNamef<<" "<<fNamel<<" "<<mNamef<<" "<<mNamel<<"  "<<gNamef<<" "<<gNamel<<"\n";
+	file.close();
+
+
+
+system("CLS");
+
+cout<<"ACCOUNT OPEN SUCCESSFULLY !";
+getch();
+
+
+
+
+}
+
+
+void homeClass::deposit() {
+    system("CLS");
+    // ... (your UI printing code)
+
+    cout << "\n\t\t|========================> ENTER DEPOSIT AMOUNT : ";
+    cin >> damt;
+    cout << "\n\t\t|========================> ACCOUNT NO : ";
+    cin >> dAccount;
+    cout << "\n\t\t|========================> ENTER DEPOSITOR NAME [FIRST NAME]: ";
+    cin >> dNamef;
+    cout << "\n\t\t|========================> ENTER DEPOSITOR NAME [LAST NAME]: ";
+    cin >> dNamel;
+    cout << "\n\t\t|========================> ENTER DEPOSITOR PHONE NO [+977-] : ";
+    cin >> dPhone;
+
+    fstream file;
+    file.open("USER-DETAILS.txt", ios::in);
+
+    if (!file) {
+        cout << "\n\n|-----------------------------> RECORD DOES NOT FOUND !";
+        return; // Exit the function if file open fails.
+    }
+
+    fstream file1;
+    file1.open("tempfile.txt", ios::app | ios::out);
+
+    while (file >> aNamef >> aNamel >> AccountNo >> AB >> aPhone >> aDate >> aAddress >> cID >> iOffice >> iDate >> fNamef >> fNamel >> mNamef >> mNamel >> gNamef >> gNamel) {
+        if (AccountNo != dAccount) {
+            file1 << aNamef << " " << aNamel << "  " << AccountNo << " " << AB << "  " << aPhone << "  " << aDate << "  " << aAddress << "  " << cID << "  " << iOffice << "  " << iDate << "  " << fNamef << " " << fNamel << " " << mNamef << " " << mNamel << "  " << gNamef << " " << gNamel << "\n";
+        }
+        else {
+            AB += damt;
+            file1 << aNamef << " " << aNamel << "  " << AccountNo << " " << AB << "  " << aPhone << "  " << aDate << "  " << aAddress << "  " << cID << "  " << iOffice << "  " << iDate << "  " << fNamef << " " << fNamel << " " << mNamef << " " << mNamel << "  " << gNamef << " " << gNamel << "\n";
+            cout << "Account Deposit successfully !\n";
+        }
+    }
+
+    file1.close();
+    file.close();
+    remove("USER-DETAILS.txt");
+    rename("tempfile.txt", "USER-DETAILS.txt");
+}
+	
