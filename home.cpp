@@ -2,6 +2,7 @@
 #include<conio.h>
 #include<fstream>
 #include<windows.h>
+#include<string.h>
 using namespace std;
 class homeClass{
     public:
@@ -11,14 +12,18 @@ class homeClass{
 	string aNamef,aNamel,aDate, aPhone,aAddress,cID,iOffice,iDate,AccountNo,fNamef,mNamef,gNamef,fNamel,mNamel,gNamel;
     long int AB;
 	//for deposit section variable 
-	string dNamef,dNamel,dPhone,dAccount;
+	string dNamef,dNamel,dPhone,dAccount,tdate;
 	int damt;
+
+//Variable for  BALANCE INQUARY
+string AccountHolder;
 	
 public:
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	void deposit();
 	void create();
+	void balanceInquary();
 
 
 void welcome(){
@@ -148,17 +153,32 @@ void menu(){
 
     switch (option)
     {
+		//Case for create Account 
     case 1:
 		do{
 		create();
 		cout<<"\n\n\t\t\t|------------> CREATE ANOTHER ACCOUNT [Y/N] ";
+			cin>>a;
 		}while(a == 'Y' || a == 'y');
         break;
+
+		//Case for Deposit Amount.
 
 	case 2:
 		deposit();
 		menu();
 		break;
+
+		//Case for Balance Inquery.
+	case 3:
+		balanceInquary();
+		menu();
+		break;
+
+		//Default case it will execute when the all case will fail .
+
+	
+	
     
     default:
     system("CLS");
@@ -256,7 +276,8 @@ getch();
 void homeClass::deposit() {
     system("CLS");
     // ... (your UI printing code)
-
+	cout << "\n\t\t|========================> ENTER TODAYS DATE : ";
+	cin>>tdate;
     cout << "\n\t\t|========================> ENTER DEPOSIT AMOUNT : ";
     cin >> damt;
     cout << "\n\t\t|========================> ACCOUNT NO : ";
@@ -278,15 +299,25 @@ void homeClass::deposit() {
 
     fstream file1;
     file1.open("tempfile.txt", ios::app | ios::out);
+	file >> aNamef >> aNamel >> AccountNo >> AB >> aPhone >> aDate >> aAddress >> cID >> iOffice >> iDate >> fNamef >> fNamel >> mNamef >> mNamel >> gNamef >> gNamel;
 
-    while (file >> aNamef >> aNamel >> AccountNo >> AB >> aPhone >> aDate >> aAddress >> cID >> iOffice >> iDate >> fNamef >> fNamel >> mNamef >> mNamel >> gNamef >> gNamel) {
+
+    while(!file.eof()) {
         if (AccountNo != dAccount) {
             file1 << aNamef << " " << aNamel << "  " << AccountNo << " " << AB << "  " << aPhone << "  " << aDate << "  " << aAddress << "  " << cID << "  " << iOffice << "  " << iDate << "  " << fNamef << " " << fNamel << " " << mNamef << " " << mNamel << "  " << gNamef << " " << gNamel << "\n";
         }
         else {
             AB += damt;
             file1 << aNamef << " " << aNamel << "  " << AccountNo << " " << AB << "  " << aPhone << "  " << aDate << "  " << aAddress << "  " << cID << "  " << iOffice << "  " << iDate << "  " << fNamef << " " << fNamel << " " << mNamef << " " << mNamel << "  " << gNamef << " " << gNamel << "\n";
+			fstream history;
+			history.open("HISTORY.txt", ios::out|ios::app);
+
+			history<<AccountNo<<"  "<<tdate<<"  "<<dNamef<<" "<<dNamel<<"  "<<dPhone<<"  RECEIVED  ! \n";
+
+
             cout << "Account Deposit successfully !\n";
+			getch();
+			break;
         }
     }
 
@@ -294,5 +325,60 @@ void homeClass::deposit() {
     file.close();
     remove("USER-DETAILS.txt");
     rename("tempfile.txt", "USER-DETAILS.txt");
+}
+
+
+void homeClass::balanceInquary(){
+
+system("CLS");
+
+    cout<<"\t\t=============================================================================================================================== "<<endl;Sleep(70);
+    cout<<"\t\t=============   ==========    ==========     ==        ==       =========           ==           ==           ==    ==      =   "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==        =  =          == =         ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==       =    =         ==   =       ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         =======       ==             ============       =========        ========        ==     =     ==    ===         "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==     =        =       ==       =   ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==    =          =      ==         = ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==========    ==========     ==        ==       ==========    =            =     ==           ==    ==      =   "<<endl;Sleep(70);
+    cout<<"\n\t\t===================================================< BALANCE INQUARY >========================================================== "<<endl;Sleep(70);
+    cout<<"\n\n\t\t\t|---------> ENTER THE ACCOUNT NUMBER : ";
+	cin>>AccountHolder;
+	fstream file00;
+
+
+	file00.open("USER_DETAILS.txt", ios::in);
+
+	file00>>AccountNo>>aNamef>>aNamel>>AB>>aDate>>aPhone;
+
+	while (!file00.eof())
+	{
+	file00>>AccountNo>>aNamef>>aNamel>>AB>>aDate>>aPhone;
+
+
+		if(AccountHolder == AccountNo){
+			cout<<"ACCOUNT HOLDER NAME : "<<aNamef<<" "<<aNamel<<" ,"<<endl;
+			cout<<"ACCOUNT HOLDER PHONE : "<<aPhone<<endl;
+			cout<<"ACCOUNT BALANCE : $"<<AB<<endl<<endl;
+			cout<<"ACCOUNT HOLDER DATE OF BIRTH : "<<aDate<<endl;
+			getch();
+			break;
+
+			
+		}else{
+			cout<<"SORRY INVALIDE ACCOUNT NUMBER TRY AGAIN !";
+			getch();
+			break;
+
+
+		}
+	}
+	
+
+
+
+
+
+
+
 }
 	
