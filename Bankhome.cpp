@@ -9,14 +9,19 @@ class homeClass{
     int option;
 
 //variable for create account section 
-	string aNamef,aNamel,aDate, aPhone,aAddress,cID,iOffice,iDate,AccountNo,fNamef,mNamef,gNamef,fNamel,mNamel,gNamel;
+	string aNamef,aNamel,aDate, aPhone,aAddress,cID,iOffice,iDate,fNamef,mNamef,gNamef,fNamel,mNamel,gNamel;
     long int AB;
 	//for deposit section variable 
-	string dNamef,dNamel,dPhone,dAccount,tdate;
-	int damt;
+	string dNamef,dNamel,dPhone,tdate;
+
+
+
+
+
+	long int damt,dAccount;
 
 //Variable for  BALANCE INQUARY
-string AccountHolder;
+long int AccountNo,AccountHolder;
 	
 public:
 
@@ -176,6 +181,7 @@ void menu(){
 		break;
 
 		//Default case it will execute when the all case will fail .
+		
 
 	
 	
@@ -343,16 +349,16 @@ system("CLS");
     cout<<"\n\t\t===================================================< BALANCE INQUARY >========================================================== "<<endl;Sleep(70);
     cout<<"\n\n\t\t\t|---------> ENTER THE ACCOUNT NUMBER : ";
 	cin>>AccountHolder;
-	fstream file00;
+	fstream file;
 
 
-	file00.open("USER_DETAILS.txt", ios::in);
+	file.open("USER_DETAILS.txt", ios::in);
 
-	file00>>AccountNo>>aNamef>>aNamel>>AB>>aDate>>aPhone;
+	file >> aNamef >> aNamel >> AccountNo >> AB >> aPhone >> aDate >> aAddress >> cID >> iOffice >> iDate >> fNamef >> fNamel >> mNamef >> mNamel >> gNamef >> gNamel;
 
-	while (!file00.eof())
+	while (!file.eof())
 	{
-	file00>>AccountNo>>aNamef>>aNamel>>AB>>aDate>>aPhone;
+	
 
 
 		if(AccountHolder == AccountNo){
