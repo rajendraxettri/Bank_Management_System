@@ -1,6 +1,7 @@
 #include<iostream>
 #include<conio.h>
 #include<fstream>
+#include<sstream>
 #include<windows.h>
 #include<string.h>
 using namespace std;
@@ -14,8 +15,8 @@ class homeClass{
 	//for deposit section variable 
 	string dNamef,dNamel,dPhone,tdate;
 
-
-
+	long int cardNo = 4070;
+	long int cardPassword;
 
 
 	long int damt,dAccount;
@@ -23,9 +24,14 @@ class homeClass{
 //Variable for  BALANCE INQUARY
 long int AccountNo,AccountHolder;
 	
+
+//variable for account creation 
+
+long int accountForATM;
 public:
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	void issueAtmCard();
 	void deposit();
 	void create();
 	void balanceInquary();
@@ -281,7 +287,7 @@ getch();
 
 void homeClass::deposit() {
     system("CLS");
-    // ... (your UI printing code)
+  
 	cout << "\n\t\t|========================> ENTER TODAYS DATE : ";
 	cin>>tdate;
     cout << "\n\t\t|========================> ENTER DEPOSIT AMOUNT : ";
@@ -300,7 +306,7 @@ void homeClass::deposit() {
 
     if (!file) {
         cout << "\n\n|-----------------------------> RECORD DOES NOT FOUND !";
-        return; // Exit the function if file open fails.
+        return; 
     }
 
     fstream file1;
@@ -349,39 +355,78 @@ system("CLS");
     cout<<"\n\t\t===================================================< BALANCE INQUARY >========================================================== "<<endl;Sleep(70);
     cout<<"\n\n\t\t\t|---------> ENTER THE ACCOUNT NUMBER : ";
 	cin>>AccountHolder;
+	
+
+
+	 fstream file("USER-DETAILS.txt");
+   
+
+    if(!file){
+        cout<<"Error opening File !" ;
+        return;
+
+
+    }
+
+    long int inputRollNo;
+    cout<<"|----------------------------> Enter Accont Number  : ";
+    cin>>inputRollNo;
+
+
+
+
+bool found = false;
+
+string line;
+while(getline(file,line)){
+    istringstream iss(line);
+//<<sname <<" "<<scontactno<<" "<<srollno<<" "<<saddress<<
+    if(iss>> aNamef >> aNamel >> AB >> AccountNo >> aPhone){
+       // cout<<sname;
+        if(AccountNo == inputRollNo){
+            found = true;
+            cout<<"Name : "<<aNamef<<" "<<aNamel<<"\n";
+            cout<<"Contact No  : "<<aPhone<<"\n";
+            cout<<"Account No : "<<AccountNo<<"\n";
+            cout<<"Balance  : "<<AB<<"\n";
+            break;
+        }
+    }
+}
+
+if(!found)
+
+    cout<<"|---------------------------> Student Record Not Found !";
+    file.close();
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+void homeClass::issueAtmCard(){
+
+		system("CLS");
 	fstream file;
 
 
-	file.open("USER_DETAILS.txt", ios::in);
-
-	file >> aNamef >> aNamel >> AccountNo >> AB >> aPhone >> aDate >> aAddress >> cID >> iOffice >> iDate >> fNamef >> fNamel >> mNamef >> mNamel >> gNamef >> gNamel;
-
-	while (!file.eof())
-	{
-	
-
-
-		if(AccountHolder == AccountNo){
-			cout<<"ACCOUNT HOLDER NAME : "<<aNamef<<" "<<aNamel<<" ,"<<endl;
-			cout<<"ACCOUNT HOLDER PHONE : "<<aPhone<<endl;
-			cout<<"ACCOUNT BALANCE : $"<<AB<<endl<<endl;
-			cout<<"ACCOUNT HOLDER DATE OF BIRTH : "<<aDate<<endl;
-			getch();
-			break;
-
-			
-		}else{
-			cout<<"SORRY INVALIDE ACCOUNT NUMBER TRY AGAIN !";
-			getch();
-			break;
-
-
-		}
-	}
-	
-
-
-
+    cout<<"\t\t=============================================================================================================================== "<<endl;Sleep(70);
+    cout<<"\t\t=============   ==========    ==========     ==        ==       =========           ==           ==           ==    ==      =   "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==        =  =          == =         ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==       =    =         ==   =       ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         =======       ==             ============       =========        ========        ==     =     ==    ===         "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==     =        =       ==       =   ==    ==  =       "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==    =          =      ==         = ==    ==    =     "<<endl;Sleep(70);
+    cout<<"\t\t     ==         ==========    ==========     ==        ==       ==========    =            =     ==           ==    ==      =   "<<endl;Sleep(70);
+  cout<<"\n\t\t===================================================< ISSUE ATM CARD >========================================================== "<<endl;Sleep(70);
+	cout<<"\n\t\t\t|---------> ENTER YOUR ACCOUNT NUMBER : ";
+cin>>accountForATM;
 
 
 
