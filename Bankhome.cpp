@@ -34,7 +34,7 @@ public:
 	void issueAtmCard();
 	void deposit();
 	void create();
-	void balanceInquary();
+	void balanceInquiry();
 
 
 void welcome(){
@@ -182,7 +182,7 @@ void menu(){
 
 		//Case for Balance Inquery.
 	case 3:
-		balanceInquary();
+		balanceInquiry();
 		menu();
 		break;
 
@@ -340,70 +340,45 @@ void homeClass::deposit() {
 }
 
 
-void homeClass::balanceInquary(){
+void homeClass::balanceInquiry() {
+    system("CLS");
 
-system("CLS");
-
-    cout<<"\t\t=============================================================================================================================== "<<endl;Sleep(70);
-    cout<<"\t\t=============   ==========    ==========     ==        ==       =========           ==           ==           ==    ==      =   "<<endl;Sleep(70);
-    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==        =  =          == =         ==    ==    =     "<<endl;Sleep(70);
-    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==       =    =         ==   =       ==    ==  =       "<<endl;Sleep(70);
-    cout<<"\t\t     ==         =======       ==             ============       =========        ========        ==     =     ==    ===         "<<endl;Sleep(70);
-    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==     =        =       ==       =   ==    ==  =       "<<endl;Sleep(70);
-    cout<<"\t\t     ==         ==            ==             ==        ==       ==       ==    =          =      ==         = ==    ==    =     "<<endl;Sleep(70);
-    cout<<"\t\t     ==         ==========    ==========     ==        ==       ==========    =            =     ==           ==    ==      =   "<<endl;Sleep(70);
-    cout<<"\n\t\t===================================================< BALANCE INQUARY >========================================================== "<<endl;Sleep(70);
-    cout<<"\n\n\t\t\t|---------> ENTER THE ACCOUNT NUMBER : ";
-	cin>>AccountHolder;
-	
-
-
-	 fstream file("USER-DETAILS.txt");
+    cout << "\n\t\t==========================< BALANCE INQUIRY >==========================" << endl;
    
+    ifstream file("USER-DETAILS.txt");
 
-    if(!file){
-        cout<<"Error opening File !" ;
+    if (!file) {
+        cout << "\n\t\tError opening File !" << endl;
         return;
-
-
     }
 
-    long int inputRollNo;
-    cout<<"|----------------------------> Enter Accont Number  : ";
-    cin>>inputRollNo;
+    long int inputAc;
+    cout << "\n\t\t|----------------------------> Enter Account Number  : ";
+    cin >> inputAc;
 
+    bool found = false;
 
+    string line;
+    while (getline(file, line)) {
+        istringstream iss(line);
 
-
-bool found = false;
-
-string line;
-while(getline(file,line)){
-    istringstream iss(line);
-//<<sname <<" "<<scontactno<<" "<<srollno<<" "<<saddress<<
-    if(iss>> aNamef >> aNamel >> AB >> AccountNo >> aPhone){
-       // cout<<sname;
-        if(AccountNo == inputRollNo){
-            found = true;
-            cout<<"Name : "<<aNamef<<" "<<aNamel<<"\n";
-            cout<<"Contact No  : "<<aPhone<<"\n";
-            cout<<"Account No : "<<AccountNo<<"\n";
-            cout<<"Balance  : "<<AB<<"\n";
-            break;
+        if (iss >> aNamef >> aNamel >> AB >> AccountNo >> aPhone) {
+            if (AccountNo == inputAc) {
+                found = true;
+                cout << "\n\t\tName : " << aNamef << " " << aNamel << endl;
+                cout << "\t\tContact No  : " << aPhone << endl;
+                cout << "\t\tAccount No : " << AccountNo << endl;
+                cout << "\t\tBalance  : " << AB << endl;
+                break;
+            }
         }
     }
-}
 
-if(!found)
+    if (!found)
+        cout << "\n\t\t|---------------------------> Account Record Not Found !" << endl;
 
-    cout<<"|---------------------------> Student Record Not Found !";
     file.close();
-	}
-	
-	
-
-
-
+}
 
 
 
